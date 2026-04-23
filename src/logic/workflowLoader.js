@@ -5,10 +5,10 @@
 import { setPipelines } from '../state/pipelineState.js';
 
 const WORKFLOW_FILES = [
-    '../../data/asset_acquisition.json',
-    '../../data/asset_optimization.json',
-    '../../data/scene_setup.json',
-    '../../data/interaction_layer.json'
+    '../data/asset_acquisition.json',
+    '../data/asset_optimization.json',
+    '../data/scene_setup.json',
+    '../data/interaction_layer.json'
 ];
 
 export async function loadAllWorkflows() {

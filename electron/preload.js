@@ -1,25 +1,23 @@
 const { contextBridge, ipcRenderer } = require('electron');
-const IPC_CHANNELS = require('./ipc/ipcChannels');
 
-/**
- * Secure API bridge exposed to the renderer process.
+/*
+ * Channel names — must match the values in electron/ipc/ipcChannels.js.
+ * Duplicated here (not imported) because preload scripts cannot
+ * require local project files in this Electron configuration.
  */
+const WORKFLOW_ACTION   = 'workflow:action';
+const WORKFLOW_RESPONSE = 'workflow:response';
+const SYSTEM_ERROR      = 'system:error';
+
 contextBridge.exposeInMainWorld('api', {
 
     sendAction: (action, payload = {}) => {
-        ipcRenderer.send(IPC_CHANNELS.WORKFLOW_ACTION, {
-            action,
-            payload
-        });
+        ipcRenderer.send(WORKFLOW_ACTION, { action, payload });
     },
 
     onActionResponse: (callback) => {
-        ipcRenderer.on(IPC_CHANNELS.WORKFLOW_RESPONSE, (_, data) => {
-            callback(data);
-        });
-        ipcRenderer.on(IPC_CHANNELS.SYSTEM_ERROR, (_, data) => {
-            callback(data);
-        });
+        ipcRenderer.on(WORKFLOW_RESPONSE, (_, data) => callback(data));
+        ipcRenderer.on(SYSTEM_ERROR,      (_, data) => callback(data));
     }
 
 });
