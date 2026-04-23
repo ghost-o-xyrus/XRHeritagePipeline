@@ -1,72 +1,37 @@
-// const { app, BrowserWindow } = require('electron');
-// const path = require('path');
-
-// function createWindow() {
-//     const win = new BrowserWindow({
-//         width: 1400,
-//         height: 900,
-//         webPreferences: {
-//             preload: path.join(__dirname, 'preload.js')
-//         }
-//     });
-
-//     win.loadFile(path.join(__dirname, '../src/index.html'));
-// }
-
-// app.whenReady().then(() => {
-//     createWindow();
-// });
-
 const { app, BrowserWindow } = require('electron');
 
 const createWindow = require('./window/createWindow');
 const initializeActionRouter = require('./ipc/actionRouter');
 
-/**
- * Initialize core application systems
+/*
+ * Holds a reference to the main window so automation code
+ * can attach modal dialogs to it.
  */
-function initializeApplication() {
+let mainWindow = null;
 
-    /*
-     * Initialize IPC communication routes
-     */
-    initializeActionRouter();
-
-    /*
-     * Create main application window
-     */
-    createWindow();
-
+function getMainWindow() {
+    return mainWindow;
 }
 
-/*
- * Electron ready lifecycle
- */
-app.whenReady().then(() => {
+function initializeApplication() {
+    initializeActionRouter({ getMainWindow });
+    mainWindow = createWindow();
+}
 
+app.whenReady().then(() => {
     initializeApplication();
 
-    /*
-     * macOS application behavior
-     */
     app.on('activate', () => {
-
         if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow();
+            mainWindow = createWindow();
         }
-
     });
-
 });
 
-/*
- * Quit app when all windows close
- * except on macOS
- */
 app.on('window-all-closed', () => {
-
     if (process.platform !== 'darwin') {
         app.quit();
     }
-
 });
+
+module.exports = { getMainWindow };
