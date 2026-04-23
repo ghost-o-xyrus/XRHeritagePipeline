@@ -1,38 +1,23 @@
-// window.addEventListener('DOMContentLoaded', () => {
-//     console.log("Preload initialized");
-// });
-
 const { contextBridge, ipcRenderer } = require('electron');
 
-/**
- * Secure API bridge exposed
- * to renderer process
+/*
+ * Channel names — must match the values in electron/ipc/ipcChannels.js.
+ * Duplicated here (not imported) because preload scripts cannot
+ * require local project files in this Electron configuration.
  */
+const WORKFLOW_ACTION   = 'workflow:action';
+const WORKFLOW_RESPONSE = 'workflow:response';
+const SYSTEM_ERROR      = 'system:error';
+
 contextBridge.exposeInMainWorld('api', {
 
-    /*
-     * Send helper action requests
-     * to main process
-     */
     sendAction: (action, payload = {}) => {
-
-        ipcRenderer.send('workflow-action', {
-            action,
-            payload
-        });
-
+        ipcRenderer.send(WORKFLOW_ACTION, { action, payload });
     },
 
-    /*
-     * Listen for responses
-     * from main process
-     */
     onActionResponse: (callback) => {
-
-        ipcRenderer.on('workflow-action-response', (_, data) => {
-            callback(data);
-        });
-
+        ipcRenderer.on(WORKFLOW_RESPONSE, (_, data) => callback(data));
+        ipcRenderer.on(SYSTEM_ERROR,      (_, data) => callback(data));
     }
 
 });

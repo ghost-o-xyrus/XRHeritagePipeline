@@ -1,0 +1,68 @@
+.sidebar {
+    background: #181818;
+    border-right: 1px solid #2a2a2a;
+    padding: 20px 16px;
+    overflow-y: auto;
+}
+
+.sidebar-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.step-item {
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #c0c0c0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.step-item:hover {
+    background: #232323;
+    color: #f0f0f0;
+}
+
+.step-item.active {
+    background: #2a2a2a;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.step-item-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #333;
+    color: #b0b0b0;
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.step-item.active .step-item-index {
+    background: #3a6fb8;
+    color: #fff;
+}
+
+.sidebar-empty {
+    color: #666;
+    font-style: italic;
+    font-size: 13px;
+}

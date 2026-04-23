@@ -1,0 +1,62 @@
+{
+    "id": "asset_acquisition",
+    "name": "Asset Acquisition",
+    "description": "Acquire heritage monument assets through photogrammetry or 3D scanning.",
+    "steps": [
+        {
+            "id": "choose_method",
+            "title": "Choose Acquisition Method",
+            "description": "Decide how you will capture the monument.",
+            "instructions": [
+                "Assess site accessibility and lighting conditions.",
+                "Choose between photogrammetry (Meshroom/WebODM) or LiDAR scanning.",
+                "Gather required hardware (camera, tripod, color checker)."
+            ],
+            "checklist": [
+                "Camera and lens selected",
+                "Site permissions confirmed",
+                "Backup storage prepared"
+            ],
+            "actions": [
+                { "label": "Launch Meshroom", "action": "launch_meshroom" }
+            ]
+        },
+        {
+            "id": "capture_images",
+            "title": "Capture Source Imagery",
+            "description": "Capture the photo set or scan data for the monument.",
+            "instructions": [
+                "Walk the full perimeter in overlapping image rings.",
+                "Maintain 60-80% overlap between adjacent photos.",
+                "Avoid reflective surfaces and moving people."
+            ],
+            "checklist": [
+                "At least 3 vertical rings captured",
+                "Detail shots taken of features",
+                "Images transferred to working folder"
+            ],
+            "actions": [
+                { "label": "Open Capture Folder", "action": "open_folder" }
+            ]
+        },
+        {
+            "id": "reconstruct",
+            "title": "Reconstruct 3D Asset",
+            "description": "Run photogrammetry reconstruction to produce a mesh.",
+            "instructions": [
+                "Import the image set into Meshroom.",
+                "Run the default reconstruction graph.",
+                "Export the resulting mesh as OBJ or FBX."
+            ],
+            "checklist": [
+                "Reconstruction completed without errors",
+                "Mesh exported to /Monuments folder",
+                "Texture atlas generated"
+            ],
+            "actions": [
+                { "label": "Launch Meshroom", "action": "launch_meshroom" },
+                { "label": "Open Output Folder", "action": "open_folder" }
+            ]
+        }
+    ]
+}
