@@ -2,14 +2,14 @@
 
 A workflow-oriented desktop application for preparing XR-ready heritage visualization environments using reusable pipelines, lightweight automation systems, and XR project preparation frameworks.
 
-## 🚀 Running the Project
+##  Running the Project
 
 Follow the steps below to set up and run the project locally.
 
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ghost-o-xyrus/XRHeritagePipeline.git
 cd <project-folder>
 ```
 
