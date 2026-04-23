@@ -1,7 +1,50 @@
-# XRHeritagePipeline
+# XR Heritage Pipeline
 
+A workflow-oriented desktop application for preparing XR-ready heritage visualization environments using reusable pipelines, lightweight automation systems, and XR project preparation frameworks.
 
-Root Structure
+---
+
+# Overview
+
+The XR Heritage Pipeline Application is designed as a semi-automated workflow assistant for XR heritage visualization projects.
+
+The system focuses on:
+
+- structured workflow guidance
+- reusable XR project preparation
+- lightweight automation systems
+- Unity XR starter project generation
+- asset optimization workflows
+- interaction layer integration
+
+The architecture is intentionally:
+
+- modular
+- lightweight
+- template-driven
+- implementation-feasible
+- easy to extend
+- collaborative-development friendly
+
+---
+
+# Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Electron | Desktop application framework |
+| Node.js | Backend logic and automation |
+| HTML/CSS/JavaScript | Frontend UI system |
+| JSON | Workflow data storage |
+| Unity | XR scene integration |
+| Blender | Asset optimization workflows |
+| Meshroom / WebODM | Photogrammetry workflows |
+
+---
+
+# Repository Architecture
+
+```plaintext
 XR-Heritage-Pipeline/
 │
 ├── package.json
@@ -20,33 +63,51 @@ XR-Heritage-Pipeline/
 ├── docs/
 ├── tests/
 └── scripts/
-ROOT FILES
-package.json
+```
 
-Language: JSON
-Defines Electron + Node.js dependencies, npm scripts, build commands, and application metadata. Depends on Electron runtime and npm ecosystem.
+---
 
-package-lock.json
+# Root Files
 
-Language: JSON
-Locks dependency versions for consistent builds across contributors. Generated automatically by npm.
+## `package.json`
 
-README.md
+- **Language:** JSON
+- Defines Electron + Node.js dependencies, npm scripts, build commands, and application metadata.
+- Depends on Electron runtime and npm ecosystem.
 
-Language: Markdown
-Main project documentation explaining setup, architecture, workflows, and contributor onboarding.
+---
 
-.gitignore
+## `package-lock.json`
 
-Language: Git config
-Prevents node_modules, build artifacts, temp files, Unity exports, and generated assets from being committed.
+- **Language:** JSON
+- Locks dependency versions for consistent builds across contributors.
 
-LICENSE
+---
 
-Language: Text
-Defines repository licensing for contributors and distribution.
+## `README.md`
 
-ELECTRON LAYER
+- **Language:** Markdown
+- Main project documentation and contributor onboarding guide.
+
+---
+
+## `.gitignore`
+
+- **Language:** Git Config
+- Prevents temporary files, build artifacts, and generated assets from being committed.
+
+---
+
+## `LICENSE`
+
+- **Language:** Text
+- Defines repository licensing and usage permissions.
+
+---
+
+# Electron Layer
+
+```plaintext
 electron/
 │
 ├── main.js
@@ -56,32 +117,51 @@ electron/
 │   └── ipcChannels.js
 └── window/
     └── createWindow.js
-electron/main.js
+```
 
-Language: JavaScript (Node.js + Electron)
-Main Electron entry point that initializes the app lifecycle and launches the main application window. Depends on Electron APIs.
+---
 
-electron/preload.js
+## `electron/main.js`
 
-Language: JavaScript
-Secure bridge exposing backend functions to frontend renderer using Electron contextBridge APIs.
+- **Language:** JavaScript (Electron + Node.js)
+- Main Electron entry point responsible for app lifecycle and window initialization.
+- Depends on Electron APIs.
 
-electron/ipc/actionRouter.js
+---
 
-Language: JavaScript
-Routes frontend helper-action requests to backend automation handlers. Depends on Electron IPC and automation modules.
+## `electron/preload.js`
 
-electron/ipc/ipcChannels.js
+- **Language:** JavaScript
+- Secure bridge exposing backend functionality to frontend renderer processes.
+- Uses Electron `contextBridge`.
 
-Language: JavaScript
-Defines standardized IPC event/channel names used between frontend and backend systems.
+---
 
-electron/window/createWindow.js
+## `electron/ipc/actionRouter.js`
 
-Language: JavaScript
-Creates and configures the Electron BrowserWindow instance and initial application settings.
+- **Language:** JavaScript
+- Routes frontend helper-action requests to backend automation handlers.
+- Depends on Electron IPC and automation modules.
 
-FRONTEND APPLICATION LAYER
+---
+
+## `electron/ipc/ipcChannels.js`
+
+- **Language:** JavaScript
+- Central registry for IPC event channel names.
+
+---
+
+## `electron/window/createWindow.js`
+
+- **Language:** JavaScript
+- Creates and configures the Electron application window.
+
+---
+
+# Frontend Application Layer
+
+```plaintext
 src/
 │
 ├── index.html
@@ -91,13 +171,26 @@ src/
 ├── logic/
 ├── state/
 └── utils/
-MAIN FRONTEND ENTRY
-src/index.html
+```
 
-Language: HTML
-Primary application layout containing navigation bar, sidebar, content panel, and status area.
+---
 
-STYLES
+# Main Frontend Entry
+
+## `src/index.html`
+
+- **Language:** HTML
+- Main application layout containing:
+  - top navigation
+  - sidebar navigation
+  - content panel
+  - status area
+
+---
+
+# Styles
+
+```plaintext
 src/styles/
 │
 ├── main.css
@@ -107,42 +200,62 @@ src/styles/
 ├── contentPanel.css
 ├── buttons.css
 └── statusbar.css
-main.css
+```
 
-Language: CSS
-Global styling rules and typography shared across the application.
+---
 
-layout.css
+## `main.css`
 
-Language: CSS
-Controls major interface layout regions and responsive panel positioning.
+- **Language:** CSS
+- Global typography and application styling rules.
 
-sidebar.css
+---
 
-Language: CSS
-Styles workflow step navigation sidebar components.
+## `layout.css`
 
-navigation.css
+- **Language:** CSS
+- Defines overall application layout structure.
 
-Language: CSS
-Styles top pipeline navigation system.
+---
 
-contentPanel.css
+## `sidebar.css`
 
-Language: CSS
-Controls workflow instruction rendering layout and instructional content presentation.
+- **Language:** CSS
+- Styles workflow sidebar navigation components.
 
-buttons.css
+---
 
-Language: CSS
-Styles helper automation buttons and interaction controls.
+## `navigation.css`
 
-statusbar.css
+- **Language:** CSS
+- Styles top pipeline navigation bar.
 
-Language: CSS
-Styles bottom workflow status display region.
+---
 
-RENDERER SYSTEM
+## `contentPanel.css`
+
+- **Language:** CSS
+- Styles instructional workflow content rendering.
+
+---
+
+## `buttons.css`
+
+- **Language:** CSS
+- Styles helper automation buttons and controls.
+
+---
+
+## `statusbar.css`
+
+- **Language:** CSS
+- Styles bottom workflow status area.
+
+---
+
+# Renderer System
+
+```plaintext
 src/renderer/
 │
 ├── appRenderer.js
@@ -151,37 +264,55 @@ src/renderer/
 ├── checklistRenderer.js
 ├── actionRenderer.js
 └── statusRenderer.js
-appRenderer.js
+```
 
-Language: JavaScript
-Initializes renderer-side UI systems and coordinates overall frontend rendering flow.
+---
 
-pipelineRenderer.js
+## `appRenderer.js`
 
-Language: JavaScript
-Renders pipeline navigation and handles pipeline switching behavior.
+- **Language:** JavaScript
+- Initializes frontend rendering systems and UI orchestration logic.
 
-stepRenderer.js
+---
 
-Language: JavaScript
-Loads and renders workflow step instructions from JSON workflow data.
+## `pipelineRenderer.js`
 
-checklistRenderer.js
+- **Language:** JavaScript
+- Renders pipeline navigation and manages pipeline switching.
 
-Language: JavaScript
-Renders workflow checklist UI elements and completion tracking visuals.
+---
 
-actionRenderer.js
+## `stepRenderer.js`
 
-Language: JavaScript
-Renders helper automation buttons and binds frontend events to IPC requests.
+- **Language:** JavaScript
+- Renders workflow step content from JSON workflow files.
 
-statusRenderer.js
+---
 
-Language: JavaScript
-Updates active pipeline, step progress, and workflow status display.
+## `checklistRenderer.js`
 
-UI COMPONENTS
+- **Language:** JavaScript
+- Renders workflow checklists and completion states.
+
+---
+
+## `actionRenderer.js`
+
+- **Language:** JavaScript
+- Renders helper automation buttons and binds action events.
+
+---
+
+## `statusRenderer.js`
+
+- **Language:** JavaScript
+- Updates workflow status display and progress indicators.
+
+---
+
+# UI Components
+
+```plaintext
 src/components/
 │
 ├── topNavigation.js
@@ -189,32 +320,48 @@ src/components/
 ├── contentPanel.js
 ├── helperButtons.js
 └── statusBar.js
-topNavigation.js
+```
 
-Language: JavaScript
-Handles top-level pipeline navigation interactions and UI updates.
+---
 
-sidebar.js
+## `topNavigation.js`
 
-Language: JavaScript
-Controls sidebar workflow step rendering and navigation logic.
+- **Language:** JavaScript
+- Handles top-level pipeline navigation interactions.
 
-contentPanel.js
+---
 
-Language: JavaScript
-Manages instructional workflow content display inside the main content area.
+## `sidebar.js`
 
-helperButtons.js
+- **Language:** JavaScript
+- Manages workflow step navigation rendering and interactions.
 
-Language: JavaScript
-Handles helper button click interactions and frontend action dispatching.
+---
 
-statusBar.js
+## `contentPanel.js`
 
-Language: JavaScript
-Displays workflow progress and currently active pipeline information.
+- **Language:** JavaScript
+- Controls workflow instruction display in the main content panel.
 
-APPLICATION LOGIC LAYER
+---
+
+## `helperButtons.js`
+
+- **Language:** JavaScript
+- Handles helper automation button interactions.
+
+---
+
+## `statusBar.js`
+
+- **Language:** JavaScript
+- Displays workflow progress and active pipeline information.
+
+---
+
+# Application Logic Layer
+
+```plaintext
 src/logic/
 │
 ├── workflowLoader.js
@@ -223,85 +370,129 @@ src/logic/
 ├── navigationController.js
 ├── actionDispatcher.js
 └── validationManager.js
-workflowLoader.js
+```
 
-Language: JavaScript
-Loads and parses workflow JSON files from the data layer.
+---
 
-pipelineManager.js
+## `workflowLoader.js`
 
-Language: JavaScript
-Controls active pipeline state and pipeline transition logic.
+- **Language:** JavaScript
+- Loads and parses workflow JSON files from the data layer.
 
-stepManager.js
+---
 
-Language: JavaScript
-Manages active workflow step state and step progression handling.
+## `pipelineManager.js`
 
-navigationController.js
+- **Language:** JavaScript
+- Controls active pipeline state and transitions.
 
-Language: JavaScript
-Coordinates UI navigation interactions between pipelines and workflow steps.
+---
 
-actionDispatcher.js
+## `stepManager.js`
 
-Language: JavaScript
-Routes frontend helper actions to Electron IPC automation systems.
+- **Language:** JavaScript
+- Manages active workflow step state.
 
-validationManager.js
+---
 
-Language: JavaScript
-Handles lightweight workflow validation checks and future checklist verification logic.
+## `navigationController.js`
 
-STATE SYSTEM
+- **Language:** JavaScript
+- Coordinates navigation interactions between pipelines and steps.
+
+---
+
+## `actionDispatcher.js`
+
+- **Language:** JavaScript
+- Routes frontend actions to Electron IPC automation systems.
+
+---
+
+## `validationManager.js`
+
+- **Language:** JavaScript
+- Handles workflow validation and checklist verification logic.
+
+---
+
+# State Management
+
+```plaintext
 src/state/
 │
 ├── appState.js
 ├── pipelineState.js
 └── uiState.js
-appState.js
+```
 
-Language: JavaScript
-Stores lightweight global application state shared across systems.
+---
 
-pipelineState.js
+## `appState.js`
 
-Language: JavaScript
-Tracks active pipeline and workflow progression information.
+- **Language:** JavaScript
+- Stores global application state shared across systems.
 
-uiState.js
+---
 
-Language: JavaScript
-Maintains temporary UI interaction states and active selections.
+## `pipelineState.js`
 
-UTILITY HELPERS
+- **Language:** JavaScript
+- Tracks workflow progression and active pipeline state.
+
+---
+
+## `uiState.js`
+
+- **Language:** JavaScript
+- Stores temporary UI interaction states.
+
+---
+
+# Utility Helpers
+
+```plaintext
 src/utils/
 │
 ├── fileUtils.js
 ├── jsonUtils.js
 ├── logger.js
 └── pathUtils.js
-fileUtils.js
+```
 
-Language: JavaScript
-Provides reusable filesystem helper utilities for local file operations.
+---
 
-jsonUtils.js
+## `fileUtils.js`
 
-Language: JavaScript
-Handles workflow JSON parsing and validation utilities.
+- **Language:** JavaScript
+- Reusable filesystem helper utilities.
 
-logger.js
+---
 
-Language: JavaScript
-Provides centralized logging utilities for debugging and workflow events.
+## `jsonUtils.js`
 
-pathUtils.js
+- **Language:** JavaScript
+- Handles JSON parsing and validation utilities.
 
-Language: JavaScript
-Handles filesystem path normalization and cross-platform path utilities.
+---
 
-WORKFLOW DATA LAYER
+## `logger.js`
+
+- **Language:** JavaScript
+- Centralized logging system for debugging and workflow events.
+
+---
+
+## `pathUtils.js`
+
+- **Language:** JavaScript
+- Cross-platform filesystem path utilities.
+
+---
+
+# Workflow Data Layer
+
+```plaintext
 data/
 │
 ├── asset_acquisition.json
@@ -310,39 +501,61 @@ data/
 ├── interaction_layer.json
 └── schemas/
     └── workflowSchema.json
-asset_acquisition.json
+```
 
-Language: JSON
-Stores workflow instructions and steps for monument acquisition workflows.
+---
 
-asset_optimization.json
+## `asset_acquisition.json`
 
-Language: JSON
-Defines optimization pipeline workflow steps and helper actions.
+- **Language:** JSON
+- Stores workflow instructions for monument acquisition workflows.
 
-scene_setup.json
+---
 
-Language: JSON
-Contains Unity XR scene setup workflow definitions.
+## `asset_optimization.json`
 
-interaction_layer.json
+- **Language:** JSON
+- Stores optimization workflow definitions and helper actions.
 
-Language: JSON
-Defines reusable XR interaction integration workflow steps.
+---
 
-workflowSchema.json
+## `scene_setup.json`
 
-Language: JSON Schema
-Defines validation structure for workflow JSON files.
+- **Language:** JSON
+- Stores Unity XR scene setup workflow instructions.
 
-HELPER AUTOMATION LAYER
+---
+
+## `interaction_layer.json`
+
+- **Language:** JSON
+- Stores XR interaction integration workflow steps.
+
+---
+
+## `workflowSchema.json`
+
+- **Language:** JSON Schema
+- Defines validation rules for workflow JSON files.
+
+---
+
+# Helper Automation Layer
+
+```plaintext
 automation/
 │
 ├── actions/
 ├── filesystem/
 ├── projectSetup/
 └── toolLaunchers/
-ACTIONS
+```
+
+---
+
+# Automation Actions
+
+```plaintext
 automation/actions/
 │
 ├── createProjectStructure.js
@@ -350,158 +563,246 @@ automation/actions/
 ├── installScripts.js
 ├── openFolder.js
 └── copyWorkflowAssets.js
-createProjectStructure.js
+```
 
-Language: JavaScript (Node.js)
-Creates standardized XR project folder structures on disk.
+---
 
-installTemplates.js
+## `createProjectStructure.js`
 
-Language: JavaScript
-Copies reusable Unity templates into generated project environments.
+- **Language:** JavaScript (Node.js)
+- Creates standardized XR project folder structures.
 
-installScripts.js
+---
 
-Language: JavaScript
-Installs reusable XR interaction scripts into target project directories.
+## `installTemplates.js`
 
-openFolder.js
+- **Language:** JavaScript
+- Copies reusable Unity templates into generated project environments.
 
-Language: JavaScript
-Opens project directories using operating system shell integration.
+---
 
-copyWorkflowAssets.js
+## `installScripts.js`
 
-Language: JavaScript
-Copies reusable workflow assets and starter resources into projects.
+- **Language:** JavaScript
+- Installs reusable XR scripts into target project directories.
 
-FILESYSTEM HELPERS
+---
+
+## `openFolder.js`
+
+- **Language:** JavaScript
+- Opens directories using OS shell integration.
+
+---
+
+## `copyWorkflowAssets.js`
+
+- **Language:** JavaScript
+- Copies reusable assets and starter resources into generated projects.
+
+---
+
+# Filesystem Helpers
+
+```plaintext
 automation/filesystem/
 │
 ├── directoryManager.js
 ├── fileCopier.js
 └── templateManager.js
-directoryManager.js
+```
 
-Language: JavaScript
-Handles recursive folder generation and directory existence checks.
+---
 
-fileCopier.js
+## `directoryManager.js`
 
-Language: JavaScript
-Handles safe file copying and overwrite behavior.
+- **Language:** JavaScript
+- Handles recursive folder generation and directory validation.
 
-templateManager.js
+---
 
-Language: JavaScript
-Manages reusable workflow template installation logic.
+## `fileCopier.js`
 
-PROJECT SETUP
+- **Language:** JavaScript
+- Handles safe file copy operations and overwrite behavior.
+
+---
+
+## `templateManager.js`
+
+- **Language:** JavaScript
+- Manages workflow template installation logic.
+
+---
+
+# Project Setup
+
+```plaintext
 automation/projectSetup/
 │
 ├── unityProjectGenerator.js
 └── xrEnvironmentSetup.js
-unityProjectGenerator.js
+```
 
-Language: JavaScript
-Generates reusable Unity XR starter project structures.
+---
 
-xrEnvironmentSetup.js
+## `unityProjectGenerator.js`
 
-Language: JavaScript
-Handles XR-related starter environment setup operations.
+- **Language:** JavaScript
+- Generates reusable Unity XR starter project structures.
 
-TOOL LAUNCHERS
+---
+
+## `xrEnvironmentSetup.js`
+
+- **Language:** JavaScript
+- Handles XR starter environment setup operations.
+
+---
+
+# Tool Launchers
+
+```plaintext
 automation/toolLaunchers/
 │
 ├── launchBlender.js
 ├── launchUnity.js
 └── launchMeshroom.js
-launchBlender.js
+```
 
-Language: JavaScript
-Launches Blender executable using Node.js process execution APIs.
+---
 
-launchUnity.js
+## `launchBlender.js`
 
-Language: JavaScript
-Launches Unity projects from the workflow application.
+- **Language:** JavaScript
+- Launches Blender using Node.js process execution APIs.
 
-launchMeshroom.js
+---
 
-Language: JavaScript
-Launches Meshroom for photogrammetry workflows.
+## `launchUnity.js`
 
-EXTERNAL INTEGRATIONS
+- **Language:** JavaScript
+- Launches Unity projects from the workflow application.
+
+---
+
+## `launchMeshroom.js`
+
+- **Language:** JavaScript
+- Launches Meshroom for photogrammetry workflows.
+
+---
+
+# External Integrations
+
+```plaintext
 integrations/
 │
 ├── unity/
 ├── blender/
 └── photogrammetry/
-integrations/unity/README.md
+```
 
-Language: Markdown
-Documents Unity integration assumptions, folder structure expectations, and XR setup dependencies.
+---
 
-integrations/blender/README.md
+## `integrations/unity/README.md`
 
-Language: Markdown
-Documents Blender workflow integration requirements and optimization assumptions.
+- **Language:** Markdown
+- Documents Unity integration assumptions and XR setup requirements.
 
-integrations/photogrammetry/README.md
+---
 
-Language: Markdown
-Documents Meshroom/WebODM workflow expectations and export requirements.
+## `integrations/blender/README.md`
 
-TEMPLATE STORAGE
+- **Language:** Markdown
+- Documents Blender optimization workflow expectations.
+
+---
+
+## `integrations/photogrammetry/README.md`
+
+- **Language:** Markdown
+- Documents Meshroom/WebODM workflow assumptions and export requirements.
+
+---
+
+# Template Storage
+
+```plaintext
 templates/
 │
 ├── unityXRStarter/
 ├── interactionPrefabs/
 ├── scripts/
 └── environments/
-templates/unityXRStarter/
+```
 
-Language: Unity project assets
-Stores reusable Unity XR starter project template files.
+---
 
-templates/interactionPrefabs/
+## `templates/unityXRStarter/`
 
-Language: Unity prefabs/assets
-Stores reusable XR interaction prefabs and interaction systems.
+- **Language:** Unity Assets
+- Stores reusable Unity XR starter project templates.
 
-templates/scripts/
+---
 
-Language: C#
-Stores reusable Unity XR scripts copied into generated projects.
+## `templates/interactionPrefabs/`
 
-templates/environments/
+- **Language:** Unity Prefabs / Assets
+- Stores reusable XR interaction prefabs and interaction systems.
 
-Language: Unity assets
-Stores reusable lightweight environment setup assets.
+---
 
-STATIC ASSETS
+## `templates/scripts/`
+
+- **Language:** C#
+- Stores reusable Unity XR scripts copied into generated projects.
+
+---
+
+## `templates/environments/`
+
+- **Language:** Unity Assets
+- Stores reusable environment setup assets.
+
+---
+
+# Static Assets
+
+```plaintext
 assets/
 │
 ├── icons/
 ├── images/
 └── ui/
-assets/icons/
+```
 
-Language: PNG/SVG
-Stores application icons and navigation symbols.
+---
 
-assets/images/
+## `assets/icons/`
 
-Language: Image assets
-Stores instructional images and future workflow diagrams.
+- **Language:** PNG / SVG
+- Stores application icons and navigation graphics.
 
-assets/ui/
+---
 
-Language: UI assets
-Stores reusable UI graphics and interface resources.
+## `assets/images/`
 
-DOCUMENTATION
+- **Language:** Image Assets
+- Stores instructional diagrams and workflow images.
+
+---
+
+## `assets/ui/`
+
+- **Language:** UI Assets
+- Stores reusable interface graphics.
+
+---
+
+# Documentation
+
+```plaintext
 docs/
 │
 ├── architecture.md
@@ -509,69 +810,141 @@ docs/
 ├── automation-spec.md
 ├── contribution-guide.md
 └── coding-standards.md
-architecture.md
+```
 
-Language: Markdown
-Documents layered architecture and module responsibilities.
+---
 
-workflow-spec.md
+## `architecture.md`
 
-Language: Markdown
-Defines workflow JSON structures and rendering behavior.
+- **Language:** Markdown
+- Documents layered architecture and module responsibilities.
 
-automation-spec.md
+---
 
-Language: Markdown
-Defines helper automation execution standards and action mappings.
+## `workflow-spec.md`
 
-contribution-guide.md
+- **Language:** Markdown
+- Defines workflow JSON structures and rendering behavior.
 
-Language: Markdown
-Explains contribution workflow and development expectations for collaborators.
+---
 
-coding-standards.md
+## `automation-spec.md`
 
-Language: Markdown
-Defines project-wide code conventions and module structuring rules.
+- **Language:** Markdown
+- Defines helper automation execution standards and action mappings.
 
-TESTING
+---
+
+## `contribution-guide.md`
+
+- **Language:** Markdown
+- Contributor onboarding and collaboration workflow documentation.
+
+---
+
+## `coding-standards.md`
+
+- **Language:** Markdown
+- Defines project-wide coding conventions and standards.
+
+---
+
+# Testing
+
+```plaintext
 tests/
 │
 ├── workflow/
 ├── automation/
 └── integration/
-tests/workflow/
+```
 
-Language: JavaScript tests
-Tests workflow parsing and rendering systems.
+---
 
-tests/automation/
+## `tests/workflow/`
 
-Language: JavaScript tests
-Tests filesystem and automation helper actions.
+- **Language:** JavaScript Tests
+- Tests workflow parsing and rendering systems.
 
-tests/integration/
+---
 
-Language: JavaScript tests
-Tests Electron integration and workflow-to-automation interactions.
+## `tests/automation/`
 
-DEVELOPMENT SCRIPTS
+- **Language:** JavaScript Tests
+- Tests helper automation and filesystem operations.
+
+---
+
+## `tests/integration/`
+
+- **Language:** JavaScript Tests
+- Tests Electron integration and workflow execution pipelines.
+
+---
+
+# Development Scripts
+
+```plaintext
 scripts/
 │
 ├── setup-dev-env.js
 ├── generate-workflow.js
 └── validate-json.js
-setup-dev-env.js
+```
 
-Language: JavaScript
-Initializes contributor development environments and required folders.
+---
 
-generate-workflow.js
+## `setup-dev-env.js`
 
-Language: JavaScript
-Generates starter workflow JSON files for rapid pipeline creation.
+- **Language:** JavaScript
+- Initializes contributor development environments.
 
-validate-json.js
+---
 
-Language: JavaScript
-Validates workflow JSON files against schema definitions.
+## `generate-workflow.js`
+
+- **Language:** JavaScript
+- Generates starter workflow JSON templates.
+
+---
+
+## `validate-json.js`
+
+- **Language:** JavaScript
+- Validates workflow JSON files against schema rules.
+
+---
+
+# Design Philosophy
+
+The system architecture follows these principles:
+
+- lightweight architecture
+- modular systems
+- reusable workflows
+- template-driven design
+- human-supervised workflows
+- implementation feasibility
+- low dependency complexity
+- scalable future expansion
+
+---
+
+# Current Goal
+
+The immediate development goal is:
+
+> Build a fully navigable and visually complete workflow application shell first.
+
+Initial focus:
+
+- UI framework
+- navigation systems
+- workflow rendering
+- placeholder automation systems
+- JSON workflow integration
+- modular architecture foundation
+
+Functionality can then be expanded incrementally.
+
+---
