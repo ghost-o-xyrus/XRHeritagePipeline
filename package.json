@@ -1,0 +1,12 @@
+{
+  "name": "xr-heritage-pipeline",
+  "version": "1.0.0",
+  "description": "XR Heritage Pipeline Application",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^latest"
+  }
+}

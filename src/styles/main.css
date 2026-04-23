@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #111;
+    color: white;
+}
+
+header {
+    padding: 20px;
+    background: #1e1e1e;
+}
+
+main {
+    display: flex;
+    height: 80vh;
+}
+
+aside {
+    width: 300px;
+    background: #222;
+    padding: 20px;
+}
+
+section {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    padding: 10px;
+    background: #1e1e1e;
+}
