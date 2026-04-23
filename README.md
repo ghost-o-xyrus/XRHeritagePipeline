@@ -2,6 +2,11 @@
 
 A workflow-oriented desktop application for preparing XR-ready heritage visualization environments using reusable pipelines, lightweight automation systems, and XR project preparation frameworks.
 
+#To Run 
+Clone this repository and enter the following commands in Terminal :
+npm install
+npm run
+
 ---
 
 # Overview
