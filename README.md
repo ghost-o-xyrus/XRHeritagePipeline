@@ -2,10 +2,28 @@
 
 A workflow-oriented desktop application for preparing XR-ready heritage visualization environments using reusable pipelines, lightweight automation systems, and XR project preparation frameworks.
 
-#To Run 
-Clone this repository and enter the following commands in Terminal :
+## 🚀 Running the Project
+
+Follow the steps below to set up and run the project locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd <project-folder>
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
+```
+
+### 3. Run the Project
+
+```bash
 npm run
+```
 
 ---
 
