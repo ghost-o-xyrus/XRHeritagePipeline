@@ -1,0 +1,61 @@
+{
+    "id": "asset_optimization",
+    "name": "Asset Optimization",
+    "description": "Reduce mesh complexity and optimize assets for XR deployment.",
+    "steps": [
+        {
+            "id": "import_mesh",
+            "title": "Import Raw Mesh",
+            "description": "Load the reconstructed mesh into Blender.",
+            "instructions": [
+                "Open Blender and import the OBJ/FBX file.",
+                "Inspect mesh for holes, non-manifold edges, and stray geometry.",
+                "Apply scale and recenter the origin."
+            ],
+            "checklist": [
+                "Mesh imported",
+                "Scale verified (meters)",
+                "Origin recentered"
+            ],
+            "actions": [
+                { "label": "Launch Blender", "action": "launch_blender" }
+            ]
+        },
+        {
+            "id": "decimate",
+            "title": "Decimate Mesh",
+            "description": "Reduce polygon count for XR performance.",
+            "instructions": [
+                "Apply a Decimate modifier targeting 30-50% ratio.",
+                "Verify silhouette and detail are preserved.",
+                "Iterate ratio until performance target is met."
+            ],
+            "checklist": [
+                "Target polycount reached",
+                "Silhouette preserved",
+                "Normals recalculated"
+            ],
+            "actions": [
+                { "label": "Launch Blender", "action": "launch_blender" }
+            ]
+        },
+        {
+            "id": "bake_textures",
+            "title": "Bake Textures",
+            "description": "Bake high-poly detail into optimized textures.",
+            "instructions": [
+                "Unwrap UVs on the low-poly mesh.",
+                "Bake normal and diffuse maps from the high-poly source.",
+                "Export optimized mesh plus texture set."
+            ],
+            "checklist": [
+                "UVs unwrapped without overlap",
+                "Normal map baked",
+                "Exported to /Monuments/Optimized"
+            ],
+            "actions": [
+                { "label": "Open Output Folder", "action": "open_folder" }
+            ]
+        }
+    ]
+}

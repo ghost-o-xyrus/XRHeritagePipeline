@@ -1,0 +1,31 @@
+.step-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.helper-button {
+    padding: 10px 16px;
+    background: #2a5a9f;
+    color: #fff;
+    border: 1px solid #3a6fb8;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s, transform 0.05s;
+}
+
+.helper-button:hover {
+    background: #3569b5;
+}
+
+.helper-button:active {
+    transform: translateY(1px);
+}
+
+.helper-button:disabled {
+    background: #333;
+    border-color: #444;
+    color: #777;
+    cursor: not-allowed;
+}

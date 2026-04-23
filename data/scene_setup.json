@@ -1,0 +1,63 @@
+{
+    "id": "scene_setup",
+    "name": "Scene Setup",
+    "description": "Prepare a Unity XR scene and import optimized heritage assets.",
+    "steps": [
+        {
+            "id": "generate_project",
+            "title": "Generate Unity XR Project",
+            "description": "Create a reusable Unity XR starter project structure.",
+            "instructions": [
+                "Run the starter project generator.",
+                "Verify /Assets, /Scenes, /Prefabs, /Scripts, /Monuments folders exist.",
+                "Open the generated project in Unity."
+            ],
+            "checklist": [
+                "Project folders generated",
+                "Unity opens without errors",
+                "XR Interaction Toolkit installed"
+            ],
+            "actions": [
+                { "label": "Generate Project Structure", "action": "create_project_structure" },
+                { "label": "Launch Unity", "action": "launch_unity" }
+            ]
+        },
+        {
+            "id": "import_assets",
+            "title": "Import Optimized Assets",
+            "description": "Bring optimized monuments into the Unity scene.",
+            "instructions": [
+                "Copy optimized meshes into /Assets/Monuments.",
+                "Drag the primary monument into the scene hierarchy.",
+                "Set appropriate import scale and generate colliders."
+            ],
+            "checklist": [
+                "Assets imported",
+                "Monument placed in scene",
+                "Colliders configured"
+            ],
+            "actions": [
+                { "label": "Copy Workflow Assets", "action": "copy_workflow_assets" },
+                { "label": "Open Project Folder", "action": "open_folder" }
+            ]
+        },
+        {
+            "id": "lighting",
+            "title": "Configure Lighting",
+            "description": "Set up lighting appropriate for XR heritage viewing.",
+            "instructions": [
+                "Place a directional light to represent sunlight.",
+                "Add ambient or skybox lighting for the site.",
+                "Bake lightmaps if scene is static."
+            ],
+            "checklist": [
+                "Directional light placed",
+                "Ambient lighting configured",
+                "Lightmaps baked (if static)"
+            ],
+            "actions": [
+                { "label": "Launch Unity", "action": "launch_unity" }
+            ]
+        }
+    ]
+}

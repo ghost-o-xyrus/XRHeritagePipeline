@@ -1,0 +1,61 @@
+{
+    "id": "interaction_layer",
+    "name": "Interaction Layer",
+    "description": "Inject reusable XR interaction systems into the Unity scene.",
+    "steps": [
+        {
+            "id": "xr_rig",
+            "title": "Add XR Rig",
+            "description": "Install the reusable XR Origin rig and locomotion systems.",
+            "instructions": [
+                "Drag the XR Origin prefab into the scene.",
+                "Configure teleport anchors or continuous locomotion.",
+                "Verify hand controllers are tracking correctly."
+            ],
+            "checklist": [
+                "XR Origin placed",
+                "Locomotion provider configured",
+                "Controllers tracking"
+            ],
+            "actions": [
+                { "label": "Install Templates", "action": "install_templates" }
+            ]
+        },
+        {
+            "id": "hotspots",
+            "title": "Place Hotspot Interactions",
+            "description": "Add informational hotspots on monument features.",
+            "instructions": [
+                "Drag hotspot prefabs onto points of interest.",
+                "Author description text for each hotspot.",
+                "Link hotspots to information panels."
+            ],
+            "checklist": [
+                "Hotspots placed on key features",
+                "Descriptions authored",
+                "Information panels linked"
+            ],
+            "actions": [
+                { "label": "Install Scripts", "action": "install_scripts" }
+            ]
+        },
+        {
+            "id": "validate",
+            "title": "Validate Interaction Layer",
+            "description": "Play-test the XR scene and verify interactions work.",
+            "instructions": [
+                "Enter Play mode in Unity.",
+                "Walk through the scene and trigger each hotspot.",
+                "Verify locomotion feels comfortable on target hardware."
+            ],
+            "checklist": [
+                "Every hotspot triggers correctly",
+                "Locomotion tested",
+                "No missing references in console"
+            ],
+            "actions": [
+                { "label": "Launch Unity", "action": "launch_unity" }
+            ]
+        }
+    ]
+}

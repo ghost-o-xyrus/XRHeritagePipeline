@@ -1,33 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';" />
     <title>XR Heritage Pipeline</title>
 
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/navigation.css" />
+    <link rel="stylesheet" href="./styles/sidebar.css" />
+    <link rel="stylesheet" href="./styles/contentPanel.css" />
+    <link rel="stylesheet" href="./styles/buttons.css" />
+    <link rel="stylesheet" href="./styles/statusbar.css" />
 </head>
-
 <body>
 
-    <header>
-        <h1>XR Heritage Pipeline</h1>
-    </header>
+    <div id="app">
 
-    <main>
+        <header id="top-nav" class="top-nav">
+            <div class="brand">XR Heritage Pipeline</div>
+            <nav id="pipeline-tabs" class="pipeline-tabs">
+                <!-- Pipeline tabs rendered here by pipelineRenderer -->
+            </nav>
+        </header>
 
-        <aside>
-            Sidebar
-        </aside>
+        <main class="workspace">
 
-        <section>
-            Main Content
-        </section>
+            <aside id="sidebar" class="sidebar">
+                <h2 class="sidebar-title">Steps</h2>
+                <ol id="step-list" class="step-list">
+                    <!-- Step list rendered here by stepRenderer -->
+                </ol>
+            </aside>
 
-    </main>
+            <section id="content-panel" class="content-panel">
+                <div id="step-header" class="step-header">
+                    <h1 id="step-title">Select a pipeline to begin</h1>
+                    <p id="step-description" class="step-description"></p>
+                </div>
 
-    <footer>
-        Status Bar
-    </footer>
+                <div id="step-instructions" class="step-instructions">
+                    <!-- Instructions rendered here -->
+                </div>
+
+                <div id="step-checklist" class="step-checklist">
+                    <!-- Checklist rendered here -->
+                </div>
+
+                <div id="step-actions" class="step-actions">
+                    <!-- Helper buttons rendered here -->
+                </div>
+            </section>
+
+        </main>
+
+        <footer id="status-bar" class="status-bar">
+            <span id="status-pipeline">Pipeline: —</span>
+            <span id="status-step">Step: —</span>
+            <span id="status-message" class="status-message">Ready</span>
+        </footer>
+
+    </div>
+
+    <script type="module" src="./renderer/appRenderer.js"></script>
 
 </body>
 </html>
