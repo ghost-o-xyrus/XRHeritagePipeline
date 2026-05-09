@@ -12,6 +12,11 @@ Follow the steps below to set up and run the project locally.
 git clone https://github.com/ghost-o-xyrus/XRHeritagePipeline.git
 cd <project-folder>
 ```
+or, if already cloned 
+```bash
+git pull -u origin --reabse
+```
+to update to latest changes.
 
 ### 2. Install Dependencies
 
