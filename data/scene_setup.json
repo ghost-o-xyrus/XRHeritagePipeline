@@ -1,62 +1,102 @@
 {
     "id": "scene_setup",
     "name": "Scene Setup",
-    "description": "Prepare a Unity XR scene and import optimized heritage assets.",
+    "description": "Create a Unity XR workspace, configure OpenXR support, and import optimized heritage assets into the scene.",
     "steps": [
         {
             "id": "generate_project",
-            "title": "Generate Unity XR Project",
-            "description": "Create a reusable Unity XR starter project structure.",
+            "title": "Generate the XR Workspace and Unity Project",
+            "description": "Create the workspace structure for the XR project and initialize the Unity project using Unity Hub.",
             "instructions": [
-                "Run the starter project generator.",
-                "Verify /Assets, /Scenes, /Prefabs, /Scripts, /Monuments folders exist.",
-                "Open the generated project in Unity."
+                "Use the Generate Project Structure button to create the workspace folder hierarchy for the XR project.",
+                "Select the final workspace root folder where all project data will be stored.",
+                "The application automatically generates folders for workflow data, Unity assets, textures, exports, documentation, and references.",
+                "After the workspace is created, launch Unity Hub using the Launch Unity button.",
+                "Inside Unity Hub, create a new 3D project and set the project location to the generated UnityProject folder inside the workspace directory.",
+                "Once the project opens in Unity, install the XR Interaction Toolkit using the Unity Package Manager.",
+                "Enable the OpenXR plugin inside Project Settings > XR Plug-in Management.",
+                "Configure the target platform for standalone VR deployment if using Meta Quest or similar devices.",
+                "Verify that the Unity project opens successfully before continuing."
             ],
             "checklist": [
-                "Project folders generated",
-                "Unity opens without errors",
-                "XR Interaction Toolkit installed"
+                "Workspace folder structure generated",
+                "Unity project created inside UnityProject folder",
+                "Unity project opens successfully",
+                "XR Interaction Toolkit installed",
+                "OpenXR plugin enabled",
+                "XR Plug-in Management configured"
             ],
             "actions": [
-                { "label": "Generate Project Structure", "action": "create_project_structure" },
-                { "label": "Launch Unity", "action": "launch_unity" }
+                {
+                    "label": "Generate Project Structure",
+                    "action": "create_project_structure"
+                },
+                {
+                    "label": "Launch Unity",
+                    "action": "launch_unity"
+                }
             ]
         },
         {
             "id": "import_assets",
-            "title": "Import Optimized Assets",
-            "description": "Bring optimized monuments into the Unity scene.",
+            "title": "Import Optimized Assets into Unity",
+            "description": "Transfer optimized monument assets into the Unity project and prepare them for scene placement.",
             "instructions": [
-                "Copy optimized meshes into /Assets/Monuments.",
-                "Drag the primary monument into the scene hierarchy.",
-                "Set appropriate import scale and generate colliders."
+                "Use the Copy Workflow Assets button to copy optimized FBX meshes and textures into both the workflow folders and the Unity Assets/Imported directory.",
+                "When prompted, select the optimized texture folder exported from Blender.",
+                "Next, select the optimized FBX export folder generated during the Blender optimization stage.",
+                "The application automatically copies these assets into the Unity project import directory.",
+                "Return to Unity and allow the editor to finish importing the copied assets.",
+                "Drag the optimized FBX monument asset into the scene hierarchy.",
+                "Verify the object scale and orientation after import.",
+                "Generate colliders for walkable or interactive surfaces where appropriate.",
+                "Organize imported assets into folders inside the Unity project for easier scene management."
             ],
             "checklist": [
-                "Assets imported",
+                "Optimized textures copied",
+                "Optimized FBX assets copied",
+                "Unity asset import completed",
                 "Monument placed in scene",
-                "Colliders configured"
+                "Scale verified inside Unity",
+                "Colliders configured where necessary"
             ],
             "actions": [
-                { "label": "Copy Workflow Assets", "action": "copy_workflow_assets" },
-                { "label": "Open Project Folder", "action": "open_folder" }
+                {
+                    "label": "Copy Workflow Assets",
+                    "action": "copy_workflow_assets"
+                },
+                {
+                    "label": "Open Project Folder",
+                    "action": "open_folder"
+                }
             ]
         },
         {
             "id": "lighting",
-            "title": "Configure Lighting",
-            "description": "Set up lighting appropriate for XR heritage viewing.",
+            "title": "Configure XR Scene Lighting and Environment",
+            "description": "Prepare scene lighting and rendering settings suitable for immersive XR heritage experiences.",
             "instructions": [
-                "Place a directional light to represent sunlight.",
-                "Add ambient or skybox lighting for the site.",
-                "Bake lightmaps if scene is static."
+                "Add a directional light to simulate natural sunlight for outdoor heritage environments.",
+                "Configure ambient lighting or a skybox to improve scene depth and environmental realism.",
+                "Avoid excessive real-time lights to maintain stable VR performance on standalone XR hardware.",
+                "Use baked lighting for static environments whenever possible to improve rendering efficiency.",
+                "Review shadows and lighting quality from the player's expected viewing angles inside VR.",
+                "Adjust light intensity and color temperature to preserve monument visibility without overexposure.",
+                "Test the scene inside the XR preview mode to ensure the environment remains comfortable and visually stable."
             ],
             "checklist": [
-                "Directional light placed",
-                "Ambient lighting configured",
-                "Lightmaps baked (if static)"
+                "Directional light configured",
+                "Ambient or skybox lighting configured",
+                "Lighting optimized for VR performance",
+                "Shadows reviewed in XR view",
+                "Baked lighting generated where appropriate",
+                "Scene tested in XR preview"
             ],
             "actions": [
-                { "label": "Launch Unity", "action": "launch_unity" }
+                {
+                    "label": "Launch Unity",
+                    "action": "launch_unity"
+                }
             ]
         }
     ]

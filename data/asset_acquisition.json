@@ -1,61 +1,101 @@
+
 {
     "id": "asset_acquisition",
     "name": "Asset Acquisition",
-    "description": "Acquire heritage monument assets through photogrammetry or 3D scanning.",
+    "description": "Capture or acquire heritage monument assets and prepare them for photogrammetry reconstruction.",
     "steps": [
         {
             "id": "choose_method",
-            "title": "Choose Acquisition Method",
-            "description": "Decide how you will capture the monument.",
+            "title": "Plan the Acquisition Workflow",
+            "description": "Prepare the monument capture process and select the acquisition method before collecting data.",
             "instructions": [
-                "Assess site accessibility and lighting conditions.",
-                "Choose between photogrammetry (Meshroom/WebODM) or LiDAR scanning.",
-                "Gather required hardware (camera, tripod, color checker)."
+                "Assess the monument site for accessibility, lighting consistency, crowd movement, and physical obstacles.",
+                "For photogrammetry, prefer diffuse daylight or evenly lit conditions. Avoid harsh shadows, reflective surfaces, or rapidly changing lighting.",
+                "Decide whether the asset will be reconstructed using photogrammetry or LiDAR scanning depending on available equipment and required accuracy.",
+                "Prepare the required hardware such as a DSLR or mirrorless camera, tripod, spare batteries, storage media, and optional color checker.",
+                "Plan a complete coverage path around the monument before beginning image capture.",
+                "Launch Meshroom to verify that the reconstruction environment is installed and functioning correctly."
             ],
             "checklist": [
-                "Camera and lens selected",
+                "Capture method selected",
+                "Camera and lens prepared",
+                "Lighting conditions assessed",
                 "Site permissions confirmed",
-                "Backup storage prepared"
+                "Backup storage available",
+                "Meshroom launch verified"
             ],
             "actions": [
-                { "label": "Launch Meshroom", "action": "launch_meshroom" }
+                {
+                    "label": "Launch Meshroom",
+                    "action": "launch_meshroom"
+                }
             ]
         },
         {
             "id": "capture_images",
-            "title": "Capture Source Imagery",
-            "description": "Capture the photo set or scan data for the monument.",
+            "title": "Capture Photogrammetry Images",
+            "description": "Capture a complete and overlapping photo set suitable for high-quality 3D reconstruction.",
             "instructions": [
-                "Walk the full perimeter in overlapping image rings.",
-                "Maintain 60-80% overlap between adjacent photos.",
-                "Avoid reflective surfaces and moving people."
+                "Walk around the monument in multiple circular passes while maintaining a consistent distance from the surface.",
+                "Maintain approximately 60–80% overlap between adjacent photographs so Meshroom can reliably detect matching feature points.",
+                "Capture at least three vertical image rings: low-angle, eye-level, and elevated-angle coverage.",
+                "Take additional close-up detail photographs of carvings, inscriptions, or intricate architectural regions.",
+                "Avoid motion blur by using stable camera movement and sufficiently fast shutter speeds.",
+                "Avoid reflective, transparent, or moving objects whenever possible, since these reduce reconstruction accuracy.",
+                "Transfer all captured images into the project capture folder before beginning reconstruction."
             ],
             "checklist": [
-                "At least 3 vertical rings captured",
-                "Detail shots taken of features",
-                "Images transferred to working folder"
+                "Full perimeter captured",
+                "Minimum 60% image overlap maintained",
+                "Multiple vertical image rings completed",
+                "Detail photographs captured",
+                "Images reviewed for blur or exposure issues",
+                "Images transferred to capture folder"
             ],
             "actions": [
-                { "label": "Open Capture Folder", "action": "open_folder" }
+                {
+                    "label": "Open Capture Folder",
+                    "action": "open_folder",
+                    "payload": {
+                        "foldertype": "capture"
+                    }
+                }
             ]
         },
         {
             "id": "reconstruct",
-            "title": "Reconstruct 3D Asset",
-            "description": "Run photogrammetry reconstruction to produce a mesh.",
+            "title": "Reconstruct the 3D Asset in Meshroom",
+            "description": "Generate a textured 3D mesh from the captured image dataset using Meshroom photogrammetry.",
             "instructions": [
-                "Import the image set into Meshroom.",
-                "Run the default reconstruction graph.",
-                "Export the resulting mesh as OBJ or FBX."
+                "Launch Meshroom and import the complete image dataset from the capture folder.",
+                "Allow Meshroom to detect feature points, match images, estimate camera positions, and generate the reconstruction graph.",
+                "Run the default reconstruction pipeline unless the dataset requires advanced parameter tuning.",
+                "Inspect the sparse and dense reconstruction stages for alignment issues or missing geometry.",
+                "After reconstruction completes, review the generated mesh for holes, floating artifacts, or incomplete surfaces.",
+                "Export the reconstructed model as OBJ or FBX along with its associated textures.",
+                "Store exported meshes and texture atlases inside the workflow output folder for later optimization in Blender."
             ],
             "checklist": [
-                "Reconstruction completed without errors",
-                "Mesh exported to /Monuments folder",
-                "Texture atlas generated"
+                "Images imported into Meshroom",
+                "Feature matching completed successfully",
+                "Dense reconstruction generated",
+                "Textured mesh generated",
+                "OBJ or FBX exported",
+                "Texture atlas exported",
+                "Files transferred to workflow output folder"
             ],
             "actions": [
-                { "label": "Launch Meshroom", "action": "launch_meshroom" },
-                { "label": "Open Output Folder", "action": "open_folder" }
+                {
+                    "label": "Launch Meshroom",
+                    "action": "launch_meshroom"
+                },
+                {
+                    "label": "Open Output Folder",
+                    "action": "open_folder",
+                    "payload": {
+                        "foldertype": "output"
+                    }
+                }
             ]
         }
     ]

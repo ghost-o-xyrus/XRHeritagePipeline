@@ -21,6 +21,6 @@ export function renderActions() {
     }
 
     container.innerHTML = actions.map(a => `
-        <button class="helper-button" data-action="${a.action}">${a.label}</button>
+        <button class="helper-button" data-action="${a.action}" data-payload='${JSON.stringify(a.payload || {})}'>${a.label}</button>
     `).join('');
 }

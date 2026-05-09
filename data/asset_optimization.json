@@ -1,60 +1,92 @@
 {
     "id": "asset_optimization",
     "name": "Asset Optimization",
-    "description": "Reduce mesh complexity and optimize assets for XR deployment.",
+    "description": "Optimize reconstructed photogrammetry assets for real-time XR performance in Unity and standalone VR devices.",
     "steps": [
         {
             "id": "import_mesh",
-            "title": "Import Raw Mesh",
-            "description": "Load the reconstructed mesh into Blender.",
+            "title": "Import and Inspect the Reconstruction Mesh",
+            "description": "Import the reconstructed photogrammetry asset into Blender and prepare it for optimization.",
             "instructions": [
-                "Open Blender and import the OBJ/FBX file.",
-                "Inspect mesh for holes, non-manifold edges, and stray geometry.",
-                "Apply scale and recenter the origin."
+                "Launch Blender and import the reconstructed OBJ or FBX mesh exported from Meshroom.",
+                "Inspect the reconstructed model for floating geometry, disconnected fragments, holes, stretched polygons, and non-manifold edges.",
+                "Delete unnecessary geometry and artifacts generated during photogrammetry reconstruction.",
+                "Verify that the model scale approximately matches real-world proportions in meters.",
+                "Apply object transforms using Ctrl+A and apply location, rotation, and scale.",
+                "Recenter the object origin so future placement inside Unity becomes easier.",
+                "Save the Blender project file before beginning optimization operations."
             ],
             "checklist": [
-                "Mesh imported",
-                "Scale verified (meters)",
-                "Origin recentered"
+                "Photogrammetry mesh imported",
+                "Artifacts and stray geometry inspected",
+                "Transforms applied",
+                "Object scale verified",
+                "Origin recentered",
+                "Blender project saved"
             ],
             "actions": [
-                { "label": "Launch Blender", "action": "launch_blender" }
+                {
+                    "label": "Launch Blender",
+                    "action": "launch_blender"
+                }
             ]
         },
         {
             "id": "decimate",
-            "title": "Decimate Mesh",
-            "description": "Reduce polygon count for XR performance.",
+            "title": "Optimize Mesh Geometry",
+            "description": "Reduce polygon count while preserving the overall shape and visual quality of the monument.",
             "instructions": [
-                "Apply a Decimate modifier targeting 30-50% ratio.",
-                "Verify silhouette and detail are preserved.",
-                "Iterate ratio until performance target is met."
+                "Select the mesh object and add a Decimate modifier in Blender.",
+                "Use Collapse mode for general polygon reduction and begin with a ratio between 0.3 and 0.5 depending on mesh complexity.",
+                "Continuously inspect the silhouette and surface details while adjusting the decimation ratio.",
+                "Prioritize preserving important architectural details and recognizable monument features.",
+                "Apply the modifier once a suitable balance between quality and performance is achieved.",
+                "Recalculate normals if shading artifacts appear after optimization.",
+                "Aim for significantly reduced triangle counts suitable for standalone XR devices such as Meta Quest."
             ],
             "checklist": [
-                "Target polycount reached",
-                "Silhouette preserved",
-                "Normals recalculated"
+                "Decimate modifier added",
+                "Polygon count reduced",
+                "Visual silhouette preserved",
+                "Important monument features retained",
+                "Normals recalculated if needed",
+                "Optimization suitable for XR rendering"
             ],
             "actions": [
-                { "label": "Launch Blender", "action": "launch_blender" }
+                {
+                    "label": "Launch Blender",
+                    "action": "launch_blender"
+                }
             ]
         },
         {
             "id": "bake_textures",
-            "title": "Bake Textures",
-            "description": "Bake high-poly detail into optimized textures.",
+            "title": "Optimize Textures and Export Final Asset",
+            "description": "Prepare optimized textures and export the final XR-ready asset for Unity integration.",
             "instructions": [
-                "Unwrap UVs on the low-poly mesh.",
-                "Bake normal and diffuse maps from the high-poly source.",
-                "Export optimized mesh plus texture set."
+                "Inspect all exported texture maps and identify unnecessarily large texture resolutions.",
+                "Reduce excessively large textures to more performance-friendly resolutions such as 2K or 1K where appropriate.",
+                "Compress texture formats while preserving important visual surface details.",
+                "Ensure UV maps remain correctly aligned after optimization.",
+                "Verify that texture assignments remain intact on the optimized mesh.",
+                "Export the optimized model as FBX for Unity compatibility.",
+                "Export all optimized textures alongside the FBX asset into the workflow output folder.",
+                "Ensure the exported FBX maintains correct scale, orientation, and material assignments."
             ],
             "checklist": [
-                "UVs unwrapped without overlap",
-                "Normal map baked",
-                "Exported to /Monuments/Optimized"
+                "Texture resolutions optimized",
+                "Textures compressed appropriately",
+                "UV mapping verified",
+                "Materials assigned correctly",
+                "Optimized FBX exported",
+                "Textures exported with asset",
+                "Files transferred to workflow output folder"
             ],
             "actions": [
-                { "label": "Open Output Folder", "action": "open_folder" }
+                {
+                    "label": "Open Output Folder",
+                    "action": "open_folder"
+                }
             ]
         }
     ]

@@ -1,60 +1,93 @@
 {
     "id": "interaction_layer",
     "name": "Interaction Layer",
-    "description": "Inject reusable XR interaction systems into the Unity scene.",
+    "description": "Configure XR interaction systems, locomotion, and informational heritage interactions inside the Unity XR scene.",
     "steps": [
         {
             "id": "xr_rig",
-            "title": "Add XR Rig",
-            "description": "Install the reusable XR Origin rig and locomotion systems.",
+            "title": "Configure XR Origin and OpenXR Interaction Systems",
+            "description": "Prepare the core XR player rig, controller tracking, and locomotion systems required for VR scene interaction.",
             "instructions": [
-                "Drag the XR Origin prefab into the scene.",
-                "Configure teleport anchors or continuous locomotion.",
-                "Verify hand controllers are tracking correctly."
+                "Ensure the OpenXR plugin and XR Interaction Toolkit are already installed and enabled in the Unity project.",
+                "Inside Unity, add an XR Origin prefab to the scene using the XR Interaction Toolkit samples or prefabs.",
+                "Verify that the XR Origin contains a Main Camera and tracked controller objects for left and right hands.",
+                "Configure locomotion systems such as teleportation or continuous movement depending on the intended user experience.",
+                "For beginner-friendly VR experiences, teleportation is generally recommended to reduce motion sickness.",
+                "Add teleportation areas or teleport anchors onto walkable surfaces within the monument environment.",
+                "Verify that controller tracking and headset movement function correctly inside Play mode.",
+                "Test the XR rig using the target hardware or XR simulator before continuing scene development."
             ],
             "checklist": [
-                "XR Origin placed",
-                "Locomotion provider configured",
-                "Controllers tracking"
+                "OpenXR enabled in project settings",
+                "XR Interaction Toolkit installed",
+                "XR Origin added to scene",
+                "Tracked controllers configured",
+                "Locomotion system configured",
+                "Teleportation areas added where necessary",
+                "XR tracking verified in Play mode"
             ],
             "actions": [
-                { "label": "Install Templates", "action": "install_templates" }
+                {
+                    "label": "Install Templates",
+                    "action": "install_templates"
+                }
             ]
         },
         {
             "id": "hotspots",
-            "title": "Place Hotspot Interactions",
-            "description": "Add informational hotspots on monument features.",
+            "title": "Create Monument Interaction Hotspots",
+            "description": "Add informational interaction points to important monument features and heritage objects.",
             "instructions": [
-                "Drag hotspot prefabs onto points of interest.",
-                "Author description text for each hotspot.",
-                "Link hotspots to information panels."
+                "Identify key architectural, historical, or cultural points of interest within the monument scene.",
+                "Create hotspot objects using colliders, UI canvases, or reusable interaction prefabs.",
+                "Place hotspots near carvings, statues, inscriptions, entrances, or historically significant structures.",
+                "Author descriptive information for each hotspot including historical context, architectural details, or cultural relevance.",
+                "Link hotspot triggers to information panels, audio narration, or visual overlays where appropriate.",
+                "Ensure hotspots remain accessible and readable within VR without obstructing navigation.",
+                "Test hotspot activation distance and interaction responsiveness using XR controllers."
             ],
             "checklist": [
-                "Hotspots placed on key features",
+                "Hotspots placed throughout scene",
+                "Interaction colliders configured",
                 "Descriptions authored",
-                "Information panels linked"
+                "Information panels linked",
+                "Hotspot visibility tested in VR",
+                "Interaction triggers functioning correctly"
             ],
             "actions": [
-                { "label": "Install Scripts", "action": "install_scripts" }
+                {
+                    "label": "Install Scripts",
+                    "action": "install_scripts"
+                }
             ]
         },
         {
             "id": "validate",
-            "title": "Validate Interaction Layer",
-            "description": "Play-test the XR scene and verify interactions work.",
+            "title": "Validate XR Interactions and Scene Performance",
+            "description": "Test the VR scene to ensure interactions, locomotion, and rendering performance function correctly on XR hardware.",
             "instructions": [
-                "Enter Play mode in Unity.",
-                "Walk through the scene and trigger each hotspot.",
-                "Verify locomotion feels comfortable on target hardware."
+                "Enter Play mode in Unity and test the scene using XR hardware or the XR simulator.",
+                "Verify that headset tracking, controller input, and locomotion systems operate correctly.",
+                "Walk through the scene and trigger each hotspot interaction to confirm proper functionality.",
+                "Inspect the Unity console for missing references, script errors, or interaction warnings.",
+                "Monitor scene performance and ensure the frame rate remains stable for comfortable VR usage.",
+                "Reduce unnecessary lighting complexity, excessive polygons, or oversized textures if performance issues occur.",
+                "Verify that monument scale, interaction distances, and movement speeds feel natural inside VR."
             ],
             "checklist": [
-                "Every hotspot triggers correctly",
-                "Locomotion tested",
-                "No missing references in console"
+                "XR scene launches successfully",
+                "Headset and controllers tracked correctly",
+                "Hotspot interactions functioning",
+                "Locomotion tested successfully",
+                "No critical console errors",
+                "VR performance remains stable",
+                "Scene interaction flow validated"
             ],
             "actions": [
-                { "label": "Launch Unity", "action": "launch_unity" }
+                {
+                    "label": "Launch Unity",
+                    "action": "launch_unity"
+                }
             ]
         }
     ]
