@@ -14,7 +14,7 @@ cd <project-folder>
 ```
 or, if already cloned 
 ```bash
-git pull -u origin --reabse
+git pull -u origin --rebase
 ```
 to update to latest changes.
 
